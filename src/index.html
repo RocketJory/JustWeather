@@ -11,6 +11,22 @@
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="" />
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
   </head>
   <body>
     <!--[if lt IE 7]>
@@ -19,12 +35,69 @@
         <a href="#">upgrade your browser</a> to improve your experience.
       </p>
     <![endif]-->
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          <p>Hello webpack!</p>
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">GetWeather</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarsExampleDefault"
+          aria-controls="navbarsExampleDefault"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div
+          class="collapse navbar-collapse justify-content-end"
+          id="navbarsExampleDefault"
+        >
+          <!-- <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+          </ul> -->
+          <form class="d-flex">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success" type="submit">
+              Search
+            </button>
+          </form>
         </div>
       </div>
-    </div>
+    </nav>
+
+    <main class="container">
+      <div class="starter-template text-center py-5 px-3">
+        <h1 id="city-name" class="my-4"></h1>
+        <p class="lead">
+          Use this document as a way to quickly start any new project.<br />
+          All you get is this text and a mostly barebones HTML document.
+        </p>
+      </div>
+      <div class="row">
+        <div id="weather-card" class="card">
+          <div class="card-header">
+            <h5 id="weather-main" class="card-title"></h5>
+            <h6 id="weather-description" class="card-subtitle text-muted"></h5>
+          </div>
+          <div class="card-body">
+            <h5 id="current-temp" class="card-title"></h5>
+            <h6 id="feels-like-temp" class="card-subtitle mb-2 text-muted"></h6>
+            <p class="card-text">Example Text</p>
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+          </div>
+        </div>
+      </div>
+    </main>
   </body>
 </html>
