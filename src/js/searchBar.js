@@ -12,6 +12,7 @@ export const searchBar = (function () {
       console.log(searchLocation);
 
       api.getWeatherForecast(searchLocation).then((data) => {
+        console.log(data);
         cityView.renderCityInfo(data);
         weatherController.updateWeather(data);
       });

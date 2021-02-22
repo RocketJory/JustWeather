@@ -21,6 +21,9 @@ class WeatherData {
     this.windDeg = data.wind.deg;
     this.windGust = data.wind.gust;
     this.cloudPercent = data.clouds.all;
+
+    delete this.snow1h;
+    delete this.rain1h;
     if ("snow" in data) {
       this.snow1h = data.snow["1h"];
     }

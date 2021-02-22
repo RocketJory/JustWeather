@@ -1,5 +1,6 @@
 import { weatherData } from "./weatherData.js";
 import { unitSystem } from "./unitSystem.js";
+
 /**
  * View class for weather card
  */
@@ -22,6 +23,7 @@ class weatherCard {
 
     this.precip = this.cardDiv.querySelector("#precip");
     this.precipData = this.precip.querySelector("#precip-data");
+    this.precipIcon = this.precip.querySelector("#precip-icon");
   }
 
   /**
@@ -47,16 +49,17 @@ class weatherCard {
       weatherData.pressure
     );
     this.cloudData.innerHTML = unitSystem.formatCloud(weatherData.cloudPercent);
+    console.log(weatherData);
     if ("snow1h" in weatherData) {
+      this.precip.classList = "col";
       this.precipData.innerHTML = unitSystem.formatPrecip(weatherData.snow1h);
-      const precipIcon = document.createElement("i");
-      precipIcon.classList = "fas fa-snowflake";
-      this.precipData.before(precipIcon);
+      this.precipIcon.classList = "fas fa-snowflake";
     } else if ("rain1h" in weatherData) {
+      this.precip.classList = "col";
       this.precipData.innerHTML = unitSystem.formatPrecip(weatherData.rain1h);
-      const precipIcon = document.createElement("i");
-      precipIcon.classList = "fas fa-tint";
-      this.precipData.before(precipIcon);
+      this.precipIcon.classList = "fas fa-tint";
+    } else {
+      this.precip.classList = "d-none";
     }
   }
 }

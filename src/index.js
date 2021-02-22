@@ -7,9 +7,6 @@ import { weatherController } from "./js/weatherController.js";
 import { searchBar } from "./js/searchBar.js";
 
 api.getWeatherForecast("Ottawa").then((data) => {
-  // console.log(data);
-
   cityView.renderCityInfo(data);
-
   weatherController.updateWeather(data);
 });
