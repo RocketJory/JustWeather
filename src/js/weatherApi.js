@@ -20,15 +20,20 @@ class weatherApi {
     }&units=${unitSystem.getUnits()}`;
 
     const response = fetch(apiURL)
-      .then((data) => {
-        return data.json();
-      })
-      .finally((data) => {
-        return data;
+      .then(this.handleErrors)
+      .then((response) => {
+        return response.json();
       })
       .catch((err) => {
-        console.error(err);
+        throw Error(response.status);
       });
+    return response;
+  }
+
+  handleErrors(response) {
+    if (!response.ok) {
+      throw Error(response.status);
+    }
     return response;
   }
 }
