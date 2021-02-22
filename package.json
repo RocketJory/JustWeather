@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack --mode development",
-    "watch": "webpack --watch",
-    "start": "webpack serve --open 'Firefox'",
-    "build": "webpack --mode production",
+    "dev": "webpack --mode development --config webpack.dev.js",
+    "watch": "webpack --watch --config webpack.dev.js",
+    "start": "webpack serve --open 'Firefox' --config webpack.dev.js",
+    "build": "webpack --mode production --config webpack.prod.js",
     "deploy": "npm run build && gh-pages -d dist"
   },
   "author": "",
@@ -23,14 +23,17 @@
     "@fortawesome/fontawesome-free": "^5.15.2",
     "babel-loader": "^8.2.2",
     "css-loader": "^5.0.2",
+    "file-loader": "^6.2.0",
     "gh-pages": "^3.1.0",
     "html-webpack-plugin": "^4.5.2",
     "require": "^2.4.20",
     "sass": "^1.32.7",
     "sass-loader": "^11.0.1",
     "style-loader": "^2.0.0",
+    "url-loader": "^4.1.1",
     "webpack": "^5.23.0",
     "webpack-cli": "^4.5.0",
-    "webpack-dev-server": "^3.11.2"
+    "webpack-dev-server": "^3.11.2",
+    "webpack-merge": "^5.7.3"
   }
 }
