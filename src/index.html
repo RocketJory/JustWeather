@@ -23,7 +23,7 @@
 
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">GetWeather</a>
+        <a class="navbar-brand" href="#">JustWeather</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -45,14 +45,15 @@
               <a class="nav-link active" aria-current="page" href="#">Home</a>
             </li>
           </ul> -->
-          <form class="d-flex">
+          <form id="search-form" name="search-form" class="d-flex">
             <input
               class="form-control me-2"
               type="search"
+              name="location"
               placeholder="Search"
               aria-label="Search"
             />
-            <button class="btn btn-outline-success" type="submit">
+            <button class="btn btn-primary" type="submit">
               Search
             </button>
           </form>
@@ -62,7 +63,7 @@
 
     <main class="container">
       <div id="city-info" class="text-center mt-5">
-        <h1 id="city-name" class="pt-5"></h1>
+        <h1 id="city-name" class="display-1 pt-5"></h1>
         <h4 id="city-time" class="text-muted"></h3>
         <h5 id="city-coords" class="text-muted"></h4>
       </div>
@@ -74,12 +75,12 @@
               <div class="row">
                 <div class="col">
                   <img id="weather-icon" class="float-left" src=""/>
-                  <h5 id="weather-main" class="card-title"></h5>
-                  <h6 id="weather-description" class="card-subtitle text-muted"></h5>
+                  <h4 id="weather-main" class="card-title"></h4>
+                  <h5 id="weather-description" class="card-subtitle text-muted"></h5>
                 </div>
                 <div class="col">
-                  <h5 id="current-temp" class="card-title"></h5>
-                  <h6 id="feels-like-temp" class="card-subtitle mb-2 text-muted"></h6>
+                  <h4 id="current-temp" class="card-title"></h4>
+                  <h5 id="feels-like-temp" class="card-subtitle mb-2 text-muted"></h5>
                 </div>
               </div>
             </div>
@@ -88,19 +89,19 @@
               <div class="row text-center">
                 <div class="col">
                   <i class="fas fa-wind"></i>
-                  <p id="wind-data"class=""></p>
+                  <h6 id="wind-data"class=""></h6>
                 </div>
                 <div id="precip" class="col">
                   <!-- <i id="precip-icon" class="fas fa-tint"></i> -->
-                  <p id="precip-data"class=""></p>
+                  <h6 id="precip-data"class=""></h6>
                 </div>
                 <div class="col">
                   <i class="fas fa-tachometer-alt"></i>
-                  <p id="pressure-data"class=""></p>
+                  <h6 id="pressure-data"class=""></h6>
                 </div>
                 <div class="col">
                   <i class="fas fa-cloud"></i>
-                  <p id="cloud-data" class=""></p>
+                  <h6 id="cloud-data" class=""></h6>
                 </div>
               </div>
             </div>

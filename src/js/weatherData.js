@@ -3,7 +3,7 @@
  * processes data from the open weather map api.
  * connects to the weather card view class.
  */
-export class weatherData {
+class WeatherData {
   constructor() {}
 
   /**
@@ -29,3 +29,5 @@ export class weatherData {
     }
   }
 }
+
+export const weatherModel = new WeatherData();

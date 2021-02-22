@@ -1,4 +1,4 @@
-export class cityInfo {
+class cityInfo {
   constructor() {
     this.cityDiv = document.querySelector("#city-info");
     this.cityHeader = this.cityDiv.querySelector("#city-name");
@@ -14,3 +14,5 @@ export class cityInfo {
     )}\u00B0, ${Number(data.coord.lon).toFixed(4)}\u00B0`;
   }
 }
+
+export const cityView = new cityInfo();

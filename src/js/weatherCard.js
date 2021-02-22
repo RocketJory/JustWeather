@@ -3,7 +3,7 @@ import { unitSystem } from "./unitSystem.js";
 /**
  * View class for weather card
  */
-export class weatherCard {
+class weatherCard {
   /**
    * store all DOM elements
    */
@@ -60,3 +60,5 @@ export class weatherCard {
     }
   }
 }
+
+export const weatherView = new weatherCard();
