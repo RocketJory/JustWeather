@@ -7,3 +7,9 @@ $fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
 .pac-container {
   z-index: 1050;
 }
+
+.navbar-item {
+  &.show {
+    margin-top: 1rem;
+  }
+}

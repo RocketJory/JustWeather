@@ -1,4 +1,5 @@
 import "./style.scss";
+import "bootstrap";
 
 import { api } from "./js/weatherApi.js";
 import { cityView } from "./js/cityInfo.js";
