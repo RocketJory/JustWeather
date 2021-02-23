@@ -10,6 +10,8 @@ export const searchBar = (function () {
   let searchFormEl = document.querySelector("#search-form");
   let searchInput = searchFormEl.querySelector("input");
 
+  loadGoogleMapsAPI();
+
   /**
    * on form submission
    */
@@ -40,4 +42,34 @@ export const searchBar = (function () {
   const isValid = function () {
     searchInput.classList.remove("is-invalid");
   };
+
+  /**
+   * Load google maps API and then wire up autocomplete
+   */
+  function loadGoogleMapsAPI() {
+    const existingScript = document.getElementById("googleMaps");
+
+    if (!existingScript) {
+      // add script tag
+      const script = document.createElement("script");
+      script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.MAPS_KEY}&libraries=places`;
+      script.id = "googleMaps";
+      document.body.appendChild(script);
+
+      // once script tag has loaded, wire up autocomplete functionality
+      script.addEventListener("load", setupAutocomplete);
+    }
+  }
+
+  /**
+   * Add autocomplete functionality to the search form input element
+   */
+  function setupAutocomplete() {
+    const autocomplete = new google.maps.places.Autocomplete(searchInput, {
+      types: ["(cities)"],
+    });
+    google.maps.event.addListener(autocomplete, "place_changed", function () {
+      const place = autocomplete.getPlace();
+    });
+  }
 })();
