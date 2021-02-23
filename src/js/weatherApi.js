@@ -6,7 +6,7 @@ import { unitSystem } from "./unitSystem.js";
 class weatherApi {
   constructor() {
     this.rootURL = "https://api.openweathermap.org/data/2.5/";
-    this.apiKey = "9d2c6d51c89133c2d093bdfd29ed47cb";
+    this.apiKey = process.env.WEATHER_KEY; // from dotenv
   }
 
   /**
