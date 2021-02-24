@@ -1,3 +1,5 @@
+import { unitSystem } from "./unitSystem";
+
 /**
  * data class used to represent relevant weather information.
  * processes data from the open weather map api.
@@ -10,6 +12,7 @@ class WeatherData {
    * parse data coming from the OpenWeatherMap api into the data model
    */
   parseWeather(data) {
+    console.log(data);
     this.temp = data.main.temp;
     this.feels_like = data.main.feels_like;
     this.humidity = data.main.humidity;
@@ -30,6 +33,13 @@ class WeatherData {
     if ("rain" in data) {
       this.rain1h = data.rain["1h"];
     }
+  }
+
+  /**
+   * set the units from the unitSystem
+   */
+  setUnits() {
+    this.units = unitSystem.getUnits();
   }
 }
 

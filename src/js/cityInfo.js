@@ -7,7 +7,8 @@ class cityInfo {
   }
 
   renderCityInfo(data) {
-    this.cityHeader.innerHTML = data.name;
+    this.cityName = data.name;
+    this.cityHeader.innerHTML = this.cityName;
     this.cityTime.innerHTML = new Date().toDateString();
     this.cityCoords.innerHTML = `${Number(data.coord.lat).toFixed(
       4

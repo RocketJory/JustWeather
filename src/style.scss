@@ -2,14 +2,19 @@ $fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
 @import "./node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss";
 @import "./node_modules/@fortawesome/fontawesome-free/scss/solid.scss";
 
-@import "~bootstrap/dist//css/bootstrap.min.css";
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "bootstrap";
 
+// necessary for google autocomplete to show over navbar
 .pac-container {
   z-index: 1050;
 }
 
+// adds some spacing to search when not collapsed
 .navbar-item {
-  &.show {
-    margin-top: 1rem;
-  }
+  @extend .mx-2;
+}
+
+#navbarsExampleDefault.show > .navbar-item {
+  @extend .my-2;
 }

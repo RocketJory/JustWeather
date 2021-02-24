@@ -18,23 +18,8 @@ export const searchBar = (function () {
   searchForm.addEventListener("submit", function (e) {
     e.preventDefault(); //stop form from submitting
     const searchLocation = searchForm["location"].value;
-
-    getWeather(searchLocation);
+    weatherController.makeWeatherCall(searchLocation);
   });
-
-  const getWeather = function (location) {
-    api
-      .getWeatherForecast(location)
-      .then((data) => {
-        cityView.renderCityInfo(data);
-        weatherController.updateWeather(data);
-      })
-      .finally(() => isValid())
-      .catch((err) => {
-        console.log(err);
-        isInvalid();
-      });
-  };
 
   const isInvalid = function () {
     searchInput.classList.add("is-invalid");
@@ -72,4 +57,9 @@ export const searchBar = (function () {
       const place = autocomplete.getPlace();
     });
   }
+
+  return {
+    isValid,
+    isInvalid,
+  };
 })();

@@ -1,14 +1,15 @@
 import { weatherView } from "./weatherCard.js";
 import { weatherModel } from "./weatherData.js";
 
-import { weatherApi } from "./weatherApi.js";
+import { cityView } from "./cityInfo.js";
+import { api } from "./weatherApi.js";
+import { searchBar } from "./searchBar.js";
 
 /**
  *
  */
 export class WeatherController {
   /**
-   *
    * @param {weatherModel} model
    * @param {weatherView} view
    */
@@ -23,6 +24,7 @@ export class WeatherController {
    */
   updateWeather(apiData) {
     this.model.parseWeather(apiData);
+    this.model.setUnits();
     this.renderWeatherView(this.model);
   }
 
@@ -31,6 +33,20 @@ export class WeatherController {
    */
   renderWeatherView() {
     this.view.renderWeather(this.model);
+  }
+
+  makeWeatherCall(location) {
+    api
+      .getWeatherForecast(location)
+      .then((data) => {
+        cityView.renderCityInfo(data);
+        this.updateWeather(data);
+      })
+      .finally(() => searchBar.isValid())
+      .catch((err) => {
+        console.log(err);
+        searchBar.isInvalid();
+      });
   }
 }
 
