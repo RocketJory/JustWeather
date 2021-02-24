@@ -61,6 +61,16 @@ class weatherCard {
     } else {
       this.precip.classList = "d-none";
     }
+
+    this.showCard();
+  }
+
+  showCard() {
+    this.cardDiv.classList.remove("d-none");
+  }
+
+  hideCard() {
+    this.cardDiv.classList.add("d-none");
   }
 }
 

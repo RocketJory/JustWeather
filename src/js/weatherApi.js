@@ -1,4 +1,5 @@
 import { unitSystem } from "./unitSystem.js";
+import { spinner } from "./loadingIcon.js";
 
 /**
  * Class used to make calls to the OpenWeatherMap api
@@ -15,6 +16,8 @@ class weatherApi {
    * @param {String} unit - the unit system to use
    */
   getWeatherForecast(city, unit = "imperial") {
+    spinner.showSpinner();
+
     const apiURL = `${this.rootURL}/weather?q=${city}&appid=${
       this.apiKey
     }&units=${unitSystem.getUnits()}`;
@@ -24,6 +27,9 @@ class weatherApi {
       .then((res) => {
         return res.json();
       })
+      .finally(() => {
+        spinner.hideSpinner();
+      })
       .catch((err) => {
         throw Error(response.status);
       });
@@ -31,6 +37,8 @@ class weatherApi {
   }
 
   getWeatherForecastLatLon(lat, lon, unit = "imperial") {
+    spinner.showSpinner();
+
     const apiURL = `${this.rootURL}/weather?lat=${lat}&lon=${lon}&appid=${
       this.apiKey
     }&units=${unitSystem.getUnits()}`;
@@ -39,6 +47,9 @@ class weatherApi {
       .then(this.handleErrors)
       .then((res) => {
         return res.json();
+      })
+      .finally(() => {
+        spinner.hideSpinner();
       })
       .catch((err) => {
         console.error(err);

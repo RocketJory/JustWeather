@@ -5,6 +5,8 @@ import { cityView } from "./cityInfo.js";
 import { api } from "./weatherApi.js";
 import { searchBar } from "./searchBar.js";
 
+import { spinner } from "./loadingIcon.js";
+
 /**
  * Controller class for weather data
  */
@@ -86,6 +88,7 @@ export class WeatherController {
 
     function geoLocationError() {
       console.warn("error getting geolocation");
+      makeWeatherCall("Ottawa");
     }
   }
 }
