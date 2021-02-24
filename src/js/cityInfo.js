@@ -1,3 +1,6 @@
+/**
+ * View-type class for city information
+ */
 class cityInfo {
   constructor() {
     this.cityDiv = document.querySelector("#city-info");
@@ -8,6 +11,8 @@ class cityInfo {
 
   renderCityInfo(data) {
     this.cityName = data.name;
+    this.lon = data.coord.lon;
+    this.lat = data.coord.lat;
     this.cityHeader.innerHTML = this.cityName;
     this.cityTime.innerHTML = new Date().toDateString();
     this.cityCoords.innerHTML = `${Number(data.coord.lat).toFixed(

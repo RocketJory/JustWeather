@@ -21,10 +21,27 @@ class weatherApi {
 
     const response = fetch(apiURL)
       .then(this.handleErrors)
-      .then((response) => {
-        return response.json();
+      .then((res) => {
+        return res.json();
       })
       .catch((err) => {
+        throw Error(response.status);
+      });
+    return response;
+  }
+
+  getWeatherForecastLatLon(lat, lon, unit = "imperial") {
+    const apiURL = `${this.rootURL}/weather?lat=${lat}&lon=${lon}&appid=${
+      this.apiKey
+    }&units=${unitSystem.getUnits()}`;
+
+    const response = fetch(apiURL)
+      .then(this.handleErrors)
+      .then((res) => {
+        return res.json();
+      })
+      .catch((err) => {
+        console.error(err);
         throw Error(response.status);
       });
     return response;

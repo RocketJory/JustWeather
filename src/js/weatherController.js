@@ -6,7 +6,7 @@ import { api } from "./weatherApi.js";
 import { searchBar } from "./searchBar.js";
 
 /**
- *
+ * Controller class for weather data
  */
 export class WeatherController {
   /**
@@ -35,6 +35,10 @@ export class WeatherController {
     this.view.renderWeather(this.model);
   }
 
+  /**
+   * Call OpenWeatherMap api with location (city name) and render results
+   * @param {String} location
+   */
   makeWeatherCall(location) {
     api
       .getWeatherForecast(location)
@@ -47,6 +51,42 @@ export class WeatherController {
         console.log(err);
         searchBar.isInvalid();
       });
+  }
+
+  /**
+   * Call OpenWeatherMap api with geolocation result and render results
+   */
+  makeWeatherCallGeolocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          api
+            .getWeatherForecastLatLon(pos.coords.latitude, pos.coords.longitude)
+            .then((data) => {
+              cityView.renderCityInfo(data);
+              this.updateWeather(data);
+            })
+            .finally(() => searchBar.isValid())
+            .catch((err) => {
+              console.log(err);
+              searchBar.isInvalid();
+            });
+        },
+        geoLocationError,
+        {
+          timeout: 3000,
+          enableHighAccuracy: true,
+          maximumAge: 600000,
+        }
+      );
+    } else {
+      console.warn("Geolocation is not supported by this browser.");
+      makeWeatherCall("Ottawa");
+    }
+
+    function geoLocationError() {
+      console.warn("error getting geolocation");
+    }
   }
 }
 
