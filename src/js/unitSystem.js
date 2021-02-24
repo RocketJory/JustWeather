@@ -9,8 +9,6 @@ export let unitSystem = (function () {
   let pressUnit = "hPa";
 
   const unitBtnGroup = document.querySelector("#unit-btns");
-  const metricBtn = unitBtnGroup.querySelector("#metric-btn");
-  const imperialBtn = unitBtnGroup.querySelector("#imperial-btn");
 
   highlightUnitBtns();
 
@@ -60,25 +58,16 @@ export let unitSystem = (function () {
    * convert a number to a temperature string for the given unit system
    * @param {Number} temp
    */
-  const formatTemperature = function (temp) {
-    return `${temp.toFixed(0)} ${tempUnit}`;
-  };
+  const formatTemperature = (temp) => `${temp.toFixed(0)} ${tempUnit}`;
 
-  const formatWind = function (speed, dir) {
-    return `${speed.toFixed(0)} ${speedUnit} ${dir}\u00B0`;
-  };
+  const formatWind = (speed, dir) =>
+    `${speed.toFixed(0)} ${speedUnit} ${dir}\u00B0`;
 
-  const formatPressure = function (press) {
-    return `${press.toFixed(0)} ${pressUnit}`;
-  };
+  const formatPressure = (press) => `${press.toFixed(0)} ${pressUnit}`;
 
-  const formatCloud = function (cloudPct) {
-    return `${cloudPct} %`;
-  };
+  const formatCloud = (cloudPct) => `${cloudPct} %`;
 
-  const formatPrecip = function (precip) {
-    return `${precip} mm`;
-  };
+  const formatPrecip = (precip) => `${precip} mm`;
 
   function highlightUnitBtns() {
     Array.from(unitBtnGroup.children).forEach((btn) => {
